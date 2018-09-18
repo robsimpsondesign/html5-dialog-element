@@ -1,0 +1,176 @@
+/* ===========================================================
+
+    Organisms - Dialog
+
+    Global dialog styling used throughout the site
+
+
+	1.
+
+=========================================================== */
+.o-dialog {
+  border: none;
+  bottom: 0;
+  display: block;
+  left: 0;
+  margin: auto;
+  max-height: 90%;
+  max-width: rem(400px);
+  overflow: hidden;
+  padding: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+  width: 90%; }
+  .o-dialog::after {
+    bottom: 0;
+    content: '';
+    left: 0;
+    pointer-events: none;
+    position: absolute;
+    right: 0; }
+
+.o-dialog::-webkit-backdrop,
+.o-dialog + .backdrop {
+  -webkit-animation: none;
+          animation: none; }
+
+.o-dialog::backdrop,
+.o-dialog + .backdrop {
+  -webkit-animation: none;
+          animation: none; }
+
+.o-dialog + .backdrop,
+._dialog_overlay {
+  bottom: 0;
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 0; }
+
+.o-dialog__wrapper {
+  height: 100%;
+  overflow: auto; }
+  @supports (max-height: -webkit-fill-available) {
+    .o-dialog__wrapper {
+      height: auto;
+      max-height: -webkit-fill-available;
+      max-height: -moz-available;
+      max-height: fill-available; } }
+
+.o-dialog__close {
+  cursor: pointer;
+  position: absolute;
+  transition: box-shadow 0.3s cubic-bezier(0.5, 0.61, 0.355, 1), color 0.3s cubic-bezier(0.5, 0.61, 0.355, 1); }
+
+.o-dialog__close-icon {
+  display: block; }
+
+/* ===========================================================
+
+    Organisms - Dialog Modifiers
+
+
+	1.
+
+=========================================================== */
+.o-dialog:not([open]) {
+  display: none; }
+
+.o-dialog.fixed {
+  position: fixed;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%); }
+
+.o-dialog[open] {
+  -webkit-animation: o-dialog-show 0.45s cubic-bezier(0.5, 0.61, 0.355, 1) normal;
+          animation: o-dialog-show 0.45s cubic-bezier(0.5, 0.61, 0.355, 1) normal; }
+
+.o-dialog[open]::-webkit-backdrop,
+.o-dialog[open] + .backdrop {
+  -webkit-animation: o-dialog-backdrop-show 0.45s cubic-bezier(0.5, 0.61, 0.355, 1) normal;
+          animation: o-dialog-backdrop-show 0.45s cubic-bezier(0.5, 0.61, 0.355, 1) normal; }
+
+.o-dialog[open]::backdrop,
+.o-dialog[open] + .backdrop {
+  -webkit-animation: o-dialog-backdrop-show 0.45s cubic-bezier(0.5, 0.61, 0.355, 1) normal;
+          animation: o-dialog-backdrop-show 0.45s cubic-bezier(0.5, 0.61, 0.355, 1) normal; }
+
+.o-dialog.is-hiding {
+  -webkit-animation: o-dialog-hide 0.45s cubic-bezier(0.5, 0.61, 0.355, 1) normal;
+          animation: o-dialog-hide 0.45s cubic-bezier(0.5, 0.61, 0.355, 1) normal; }
+
+.o-dialog.is-hiding::-webkit-backdrop,
+.o-dialog.is-hiding + .backdrop {
+  -webkit-animation: o-dialog-backdrop-hide 0.45s cubic-bezier(0.5, 0.61, 0.355, 1) normal;
+          animation: o-dialog-backdrop-hide 0.45s cubic-bezier(0.5, 0.61, 0.355, 1) normal; }
+
+.o-dialog.is-hiding::backdrop,
+.o-dialog.is-hiding + .backdrop {
+  -webkit-animation: o-dialog-backdrop-hide 0.45s cubic-bezier(0.5, 0.61, 0.355, 1) normal;
+          animation: o-dialog-backdrop-hide 0.45s cubic-bezier(0.5, 0.61, 0.355, 1) normal; }
+
+@-webkit-keyframes o-dialog-show {
+  0% {
+    opacity: .01; }
+  50% {
+    opacity: .99; }
+  100% {
+    opacity: .99;
+    -webkit-transform: translateY(0);
+            transform: translateY(0); } }
+
+@keyframes o-dialog-show {
+  0% {
+    opacity: .01; }
+  50% {
+    opacity: .99; }
+  100% {
+    opacity: .99;
+    -webkit-transform: translateY(0);
+            transform: translateY(0); } }
+
+@-webkit-keyframes o-dialog-backdrop-show {
+  0% {
+    opacity: .01; }
+  100% {
+    opacity: .99; } }
+
+@keyframes o-dialog-backdrop-show {
+  0% {
+    opacity: .01; }
+  100% {
+    opacity: .99; } }
+
+@-webkit-keyframes o-dialog-hide {
+  0% {
+    opacity: .99;
+    -webkit-transform: translateY(0);
+            transform: translateY(0); }
+  50% {
+    opacity: .01; }
+  100% {
+    opacity: .01; } }
+
+@keyframes o-dialog-hide {
+  0% {
+    opacity: .99;
+    -webkit-transform: translateY(0);
+            transform: translateY(0); }
+  50% {
+    opacity: .01; }
+  100% {
+    opacity: .01; } }
+
+@-webkit-keyframes o-dialog-backdrop-hide {
+  0% {
+    opacity: .99; }
+  100% {
+    opacity: .01; } }
+
+@keyframes o-dialog-backdrop-hide {
+  0% {
+    opacity: .99; }
+  100% {
+    opacity: .01; } }
