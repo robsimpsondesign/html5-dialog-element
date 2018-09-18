@@ -9,11 +9,21 @@
 
 =========================================================== */
 
+$co-dialog-bg: #ffffff;
+$co-dialog-dropshadow: rgba(#212b36, .25);
+$co-dialog-close-btn-focus-ring: rgba(#212b36, .5);
+$co-dialog-close-btn-bg: transparent;
+$co-dialog-close-btn-icon: #212b36;
+$co-dialog-close-btn-hover-bg: rgba(#212b36, .125);
+$co-dialog-close-btn-hover-icon: #212b36;
+$co-dialog-haze: rgba(#212b36, .75);
+
 .o-dialog {
-    // background-color: $co-page-dialog-bg;
+    background-color: $co-dialog-bg;
 	border: none;
-	// border-radius: $un-page-radius * 2;
+	border-radius: rem(4px);
 	bottom: 0;
+    box-shadow: 0 rem(20px) rem(40px) 0 $co-dialog-dropshadow;
 	display: block;
     left: 0;
 	margin: auto;
@@ -33,23 +43,12 @@
     @include respond-min($bp-md) {
         max-width: rem(600px);
 	}
-
-	&::after {
-		// background-image: linear-gradient(rgba($co-page-dialog-bg, 0), rgba($co-page-dialog-bg, 1));
-		bottom: 0;
-		content: '';
-		// height: $un-20;
-		left: 0;
-		pointer-events: none;
-		position: absolute;
-		right: 0;
-	}
 }
 
 .o-dialog::backdrop,
 .o-dialog + .backdrop {
     animation: none;
-    // background-color: $co-page-dialog-haze;
+    background-color: $co-dialog-haze;
 }
 
 .o-dialog + .backdrop,
@@ -64,45 +63,39 @@
 .o-dialog__wrapper {
 	height: 100%;
 	overflow: auto;
-
-	@supports(max-height: -webkit-fill-available) {
-		height: auto;
-		max-height: fill-available;
-	}
 }
 
 .o-dialog__content {
-
+    padding: rem(20px);
 }
 
 .o-dialog__close {
-	// border-radius: $un-page-radius;
-    cursor: pointer;
-    // padding: $un-10;
+    background-color: $co-dialog-close-btn-bg;
+    border-radius: 100%;
+    color: $co-dialog-close-btn-icon;
+    padding: rem(10px);
     position: absolute;
-    // right: $un-10;
-    // top: $un-10;
-	transition: box-shadow $ut-speed $ut-timing-func-1, color $ut-speed $ut-timing-func-1;
+    right: rem(10px);
+    top: rem(10px);
+	transition: background-color $ut-speed $ut-timing-func-1, box-shadow $ut-speed $ut-timing-func-1, color $ut-speed $ut-timing-func-1;
 
-	// @include respond-min($bp-sm) {
-	// 	padding: $un-15;
-	// 	right: $un-15;
-    // 	top: $un-15;
-    // }
-
-    // @include respond-min($bp-md) {
-	// 	padding: $un-20;
-	// 	right: $un-20;
-    // 	top: $un-20;
-    // }
+    &:focus {
+        box-shadow: 0 0 0 rem(4px) $co-dialog-close-btn-focus-ring;
+        outline: none;
+    }
 
     &:hover {
-		// color: $co-organisms-dialog-close-icon-hover;
+		background-color: $co-dialog-close-btn-hover-bg;
+        color: $co-dialog-close-btn-hover-icon;
     }
 }
 
 .o-dialog__close-icon {
     display: block;
+    height: rem(16px);
+    stroke: currentColor;
+    stroke-width: 1.5;
+    width: rem(16px);
 }
 
 
@@ -143,10 +136,14 @@
     animation: o-dialog-backdrop-hide $ut-speed * 1.5 $ut-timing-func-1 normal;
 }
 
+@media screen and (prefers-reduced-motion: reduce) {
+
+}
+
 @keyframes o-dialog-show {
     0% {
 		opacity: .01;
-		// transform: translateY($un-40);
+		transform: translateY(rem(40px));
 	}
 	50% {
 		opacity: .99;
@@ -176,7 +173,7 @@
 	}
     100% {
 		opacity: .01;
-		// transform: translateY($un-40);
+		transform: translateY(rem(40px));
     }
 }
 

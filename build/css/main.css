@@ -178,8 +178,11 @@ img {
 
 =========================================================== */
 .o-dialog {
+  background-color: #ffffff;
   border: none;
+  border-radius: 0.25rem;
   bottom: 0;
+  box-shadow: 0 1.25rem 2.5rem 0 rgba(33, 43, 54, 0.25);
   display: block;
   left: 0;
   margin: auto;
@@ -197,23 +200,18 @@ img {
   @media screen and (min-width: 48em) {
     .o-dialog {
       max-width: 37.5rem; } }
-  .o-dialog::after {
-    bottom: 0;
-    content: '';
-    left: 0;
-    pointer-events: none;
-    position: absolute;
-    right: 0; }
 
 .o-dialog::-webkit-backdrop,
 .o-dialog + .backdrop {
   -webkit-animation: none;
-          animation: none; }
+          animation: none;
+  background-color: rgba(33, 43, 54, 0.75); }
 
 .o-dialog::backdrop,
 .o-dialog + .backdrop {
   -webkit-animation: none;
-          animation: none; }
+          animation: none;
+  background-color: rgba(33, 43, 54, 0.75); }
 
 .o-dialog + .backdrop,
 ._dialog_overlay {
@@ -226,20 +224,32 @@ img {
 .o-dialog__wrapper {
   height: 100%;
   overflow: auto; }
-  @supports (max-height: -webkit-fill-available) {
-    .o-dialog__wrapper {
-      height: auto;
-      max-height: -webkit-fill-available;
-      max-height: -moz-available;
-      max-height: fill-available; } }
+
+.o-dialog__content {
+  padding: 1.25rem; }
 
 .o-dialog__close {
-  cursor: pointer;
+  background-color: transparent;
+  border-radius: 100%;
+  color: #212b36;
+  padding: 0.625rem;
   position: absolute;
-  transition: box-shadow 0.3s cubic-bezier(0.5, 0.61, 0.355, 1), color 0.3s cubic-bezier(0.5, 0.61, 0.355, 1); }
+  right: 0.625rem;
+  top: 0.625rem;
+  transition: background-color 0.3s cubic-bezier(0.5, 0.61, 0.355, 1), box-shadow 0.3s cubic-bezier(0.5, 0.61, 0.355, 1), color 0.3s cubic-bezier(0.5, 0.61, 0.355, 1); }
+  .o-dialog__close:focus {
+    box-shadow: 0 0 0 0.25rem rgba(33, 43, 54, 0.5);
+    outline: none; }
+  .o-dialog__close:hover {
+    background-color: rgba(33, 43, 54, 0.125);
+    color: #212b36; }
 
 .o-dialog__close-icon {
-  display: block; }
+  display: block;
+  height: 1rem;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  width: 1rem; }
 
 /* ===========================================================
 
@@ -288,7 +298,9 @@ img {
 
 @-webkit-keyframes o-dialog-show {
   0% {
-    opacity: .01; }
+    opacity: .01;
+    -webkit-transform: translateY(2.5rem);
+            transform: translateY(2.5rem); }
   50% {
     opacity: .99; }
   100% {
@@ -298,7 +310,9 @@ img {
 
 @keyframes o-dialog-show {
   0% {
-    opacity: .01; }
+    opacity: .01;
+    -webkit-transform: translateY(2.5rem);
+            transform: translateY(2.5rem); }
   50% {
     opacity: .99; }
   100% {
@@ -326,7 +340,9 @@ img {
   50% {
     opacity: .01; }
   100% {
-    opacity: .01; } }
+    opacity: .01;
+    -webkit-transform: translateY(2.5rem);
+            transform: translateY(2.5rem); } }
 
 @keyframes o-dialog-hide {
   0% {
@@ -336,7 +352,9 @@ img {
   50% {
     opacity: .01; }
   100% {
-    opacity: .01; } }
+    opacity: .01;
+    -webkit-transform: translateY(2.5rem);
+            transform: translateY(2.5rem); } }
 
 @-webkit-keyframes o-dialog-backdrop-hide {
   0% {
